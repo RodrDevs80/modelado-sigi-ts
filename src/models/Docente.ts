@@ -10,7 +10,7 @@ interface DocenteAttributes extends InferAttributes<Docente> {
   contrasenia: string;
   dni: string;
   titulo: string;
-  especialidad: string;
+  especialidad: string | null;
   domicilio: string;
   telefono: string;
   idAdministrativo: number;
@@ -24,7 +24,7 @@ interface DocenteCreationAttributes extends InferCreationAttributes<Docente> {
   contrasenia: string;
   dni: string;
   titulo: string;
-  especialidad: string;
+  especialidad: string | null;
   domicilio: string;
   telefono: string;
   idAdministrativo: number;
@@ -39,7 +39,7 @@ class Docente extends Model<DocenteAttributes, DocenteCreationAttributes> {
   declare contrasenia: string;
   declare dni: string;
   declare titulo: string;
-  declare especialidad: string;
+  declare especialidad: string | null;
   declare domicilio: string;
   declare telefono: string;
   declare idAdministrativo: number;
@@ -100,7 +100,7 @@ Docente.init(
     },
     especialidad: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
     },
     domicilio: {
       type: DataTypes.STRING(255),

@@ -3,146 +3,146 @@ import sequelize from "../config/database/conexion.js";
 import bcrypt from "bcrypt";
 
 interface AdministrativoAttributes extends InferAttributes<Administrativo> {
-    id: CreationOptional<number>;
-    nombre: string;
-    apellido: string;
-    email: string;
-    dni: string;
-    contrasenia: string;
-    telefono: string;
-    idRol: number;
-    activo: CreationOptional<boolean>;
+  id: CreationOptional<number>;
+  nombre: string;
+  apellido: string;
+  email: string;
+  dni: string;
+  contrasenia: string;
+  telefono: string;
+  idRol: number;
+  activo: CreationOptional<boolean>;
 }
 
 interface AdministrativoCreationAttributes extends InferCreationAttributes<Administrativo> {
-    nombre: string;
-    apellido: string;
-    email: string;
-    dni: string;
-    contrasenia: string;
-    telefono: string;
-    idRol: number;
-    activo: boolean;
+  nombre: string;
+  apellido: string;
+  email: string;
+  dni: string;
+  contrasenia: string;
+  telefono: string;
+  idRol: number;
+  activo: boolean;
 }
 
 class Administrativo extends Model<AdministrativoAttributes, AdministrativoCreationAttributes> {
-    declare id: CreationOptional<number>;
-    declare nombre: string;
-    declare apellido: string;
-    declare email: string;
-    declare dni: string;
-    declare contrasenia: string;
-    declare telefono: string;
-    declare idRol: number;
-    declare activo: CreationOptional<boolean>;
+  declare id: CreationOptional<number>;
+  declare nombre: string;
+  declare apellido: string;
+  declare email: string;
+  declare dni: string;
+  declare contrasenia: string;
+  declare telefono: string;
+  declare idRol: number;
+  declare activo: CreationOptional<boolean>;
 
-    async validarContrasenia(contraseniaIngresada: string): Promise<boolean> {
-        if (!this.contrasenia) return false;
-        return bcrypt.compare(contraseniaIngresada, this.contrasenia);
-    }
+  async validarContrasenia(contraseniaIngresada: string): Promise<boolean> {
+    if (!this.contrasenia) return false;
+    return bcrypt.compare(contraseniaIngresada, this.contrasenia);
+  }
 }
 
 Administrativo.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-        },
-        nombre: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
-            validate: {
-                notEmpty: { msg: "El nombre es obligatorio" },
-            },
-        },
-        apellido: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
-            validate: {
-                notEmpty: { msg: "El apellido es obligatorio" },
-            },
-        },
-        email: {
-            type: DataTypes.STRING(150),
-            allowNull: false,
-            unique: { name: "email", msg: "El email ya está registrado" },
-            validate: {
-                isEmail: { msg: "Debe proporcionar un email válido" },
-                notEmpty: { msg: "El email es obligatorio" },
-            },
-        },
-        dni: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
-            unique: { name: "dni", msg: "El DNI ya está registrado" },
-            validate: {
-                notEmpty: { msg: "El DNI es obligatorio" },
-                esNumerico(value: string) {
-                    if (!/^\d+$/.test(value)) {
-                        throw new Error("El DNI debe contener únicamente números");
-                    }
-                },
-            },
-        },
-        contrasenia: {
-            type: DataTypes.STRING(100),
-            allowNull: false,
-        },
-        telefono: {
-            type: DataTypes.STRING(30),
-            allowNull: false,
-        },
-        idRol: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            field: "id_rol",
-            references: {
-                model: "roles",
-                key: "id",
-            },
-        },
-        activo: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true,
-        },
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
     },
-    {
-        sequelize,
-        tableName: "administrativos",
-        createdAt: "fecha_de_alta",
-        updatedAt: "fecha_actualizacion",
-        paranoid: false,
-        indexes: [
-            { unique: true, fields: ["email"] },
-            { unique: true, fields: ["dni"] },
-        ],
-        hooks: {
-            beforeValidate: (administrativo: Administrativo) => {
-                if (administrativo.email) {
-                    administrativo.email = administrativo.email.trim().toLowerCase();
-                }
-                if (administrativo.contrasenia) {
-                    administrativo.contrasenia = administrativo.contrasenia.trim();
-                }
-                if (administrativo.nombre) administrativo.nombre = administrativo.nombre.trim();
-                if (administrativo.apellido) administrativo.apellido = administrativo.apellido.trim();
-                if (administrativo.dni) administrativo.dni = administrativo.dni.trim();
-            },
-            beforeCreate: async (administrativo: Administrativo) => {
-                if (administrativo.contrasenia) {
-                    const salt = await bcrypt.genSalt(10);
-                    administrativo.contrasenia = await bcrypt.hash(administrativo.contrasenia, salt);
-                }
-            },
-            beforeUpdate: async (administrativo: Administrativo) => {
-                if (administrativo.changed("contrasenia") && administrativo.contrasenia) {
-                    const salt = await bcrypt.genSalt(10);
-                    administrativo.contrasenia = await bcrypt.hash(administrativo.contrasenia, salt);
-                }
-            },
+    nombre: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      validate: {
+        notEmpty: { msg: "El nombre es obligatorio" },
+      },
+    },
+    apellido: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      validate: {
+        notEmpty: { msg: "El apellido es obligatorio" },
+      },
+    },
+    email: {
+      type: DataTypes.STRING(150),
+      allowNull: false,
+      unique: { name: "email", msg: "El email ya está registrado" },
+      validate: {
+        isEmail: { msg: "Debe proporcionar un email válido" },
+        notEmpty: { msg: "El email es obligatorio" },
+      },
+    },
+    dni: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+      unique: { name: "dni", msg: "El DNI ya está registrado" },
+      validate: {
+        notEmpty: { msg: "El DNI es obligatorio" },
+        esNumerico(value: string) {
+          if (!/^\d+$/.test(value)) {
+            throw new Error("El DNI debe contener únicamente números");
+          }
         },
-    }
+      },
+    },
+    contrasenia: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    telefono: {
+      type: DataTypes.STRING(30),
+      allowNull: false,
+    },
+    idRol: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: "id_rol",
+      references: {
+        model: "roles",
+        key: "id",
+      },
+    },
+    activo: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
+  },
+  {
+    sequelize,
+    tableName: "administrativos",
+    createdAt: "fecha_de_alta",
+    updatedAt: "fecha_actualizacion",
+    paranoid: false,
+    indexes: [
+      { unique: true, fields: ["email"] },
+      { unique: true, fields: ["dni"] },
+    ],
+    hooks: {
+      beforeValidate: (administrativo: Administrativo) => {
+        if (administrativo.email) {
+          administrativo.email = administrativo.email.trim().toLowerCase();
+        }
+        if (administrativo.contrasenia) {
+          administrativo.contrasenia = administrativo.contrasenia.trim();
+        }
+        if (administrativo.nombre) administrativo.nombre = administrativo.nombre.trim();
+        if (administrativo.apellido) administrativo.apellido = administrativo.apellido.trim();
+        if (administrativo.dni) administrativo.dni = administrativo.dni.trim();
+      },
+      beforeCreate: async (administrativo: Administrativo) => {
+        if (administrativo.contrasenia) {
+          const salt = await bcrypt.genSalt(10);
+          administrativo.contrasenia = await bcrypt.hash(administrativo.contrasenia, salt);
+        }
+      },
+      beforeUpdate: async (administrativo: Administrativo) => {
+        if (administrativo.changed("contrasenia") && administrativo.contrasenia) {
+          const salt = await bcrypt.genSalt(10);
+          administrativo.contrasenia = await bcrypt.hash(administrativo.contrasenia, salt);
+        }
+      },
+    },
+  }
 );
 
 export default Administrativo;

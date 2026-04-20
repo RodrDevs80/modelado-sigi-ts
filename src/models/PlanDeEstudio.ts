@@ -9,6 +9,7 @@ interface PlanDeEstudioAttributes extends InferAttributes<PlanDeEstudio> {
   duracionEnAnios: number;
   estado: string;
   idCarrera: number;
+  idAdministrativo: number;
 }
 
 interface PlanDeEstudioCreationAttributes extends InferCreationAttributes<PlanDeEstudio> {
@@ -18,6 +19,7 @@ interface PlanDeEstudioCreationAttributes extends InferCreationAttributes<PlanDe
   duracionEnAnios: number;
   estado: string;
   idCarrera: number;
+  idAdministrativo: number;
 }
 
 class PlanDeEstudio extends Model<PlanDeEstudioAttributes, PlanDeEstudioCreationAttributes> {
@@ -28,6 +30,7 @@ class PlanDeEstudio extends Model<PlanDeEstudioAttributes, PlanDeEstudioCreation
   declare duracionEnAnios: number;
   declare estado: string | null;
   declare idCarrera: number;
+  declare idAdministrativo: number;
 }
 
 PlanDeEstudio.init(
@@ -68,7 +71,15 @@ PlanDeEstudio.init(
         key: "id",
       },
     },
-
+    idAdministrativo: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: "id_administrativo",
+      references: {
+        model: "administrativos",
+        key: "id"
+      }
+    }
   },
   {
     sequelize,

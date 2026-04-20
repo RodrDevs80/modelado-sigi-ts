@@ -9,6 +9,7 @@ interface UsuarioAttributes extends InferAttributes<Usuario> {
   email: string;
   contrasenia: string;
   activo: CreationOptional<boolean>;
+  idAdministrativo: number;
 }
 
 interface UsuarioCreationAttributes extends InferCreationAttributes<Usuario> {
@@ -17,6 +18,7 @@ interface UsuarioCreationAttributes extends InferCreationAttributes<Usuario> {
   email: string;
   contrasenia: string;
   activo: boolean;
+  idAdministrativo: number;
 }
 
 class Usuario extends Model<UsuarioAttributes, UsuarioCreationAttributes> {
@@ -26,6 +28,7 @@ class Usuario extends Model<UsuarioAttributes, UsuarioCreationAttributes> {
   declare email: string;
   declare contrasenia: string | null;
   declare activo: CreationOptional<boolean>;
+  declare idAdministrativo: number;
 
   async validarContrasenia(contraseniaIngresada: string): Promise<boolean> {
     if (!this.contrasenia) return false;
@@ -67,6 +70,15 @@ Usuario.init(
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
+    idAdministrativo: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: "id_administrativo",
+      references: {
+        model: "administrativos",
+        key: "id"
+      }
+    }
   },
   {
     sequelize,

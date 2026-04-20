@@ -5,23 +5,26 @@ interface CarreraAttributes extends InferAttributes<Carrera> {
   id: CreationOptional<number>;
   codigo: string;
   nombre: string;
-  tipo: "permanente" | "a_termino" | null;
-  activo: CreationOptional<boolean>;
+  tipo: "permanente" | "a_termino";
+  estado: "activa" | "en cierre";
+  idAdministrativo: number;
 }
 
 interface CarreraCreationAttributes extends InferCreationAttributes<Carrera> {
   codigo: string;
   nombre: string;
-  tipo: "permanente" | "a_termino" | null;
-  activo: boolean;
+  tipo: "permanente" | "a_termino";
+  estado: "activa" | "en cierre";
+  idAdministrativo: number;
 }
 
 class Carrera extends Model<CarreraAttributes, CarreraCreationAttributes> {
   declare id: CreationOptional<number>;
   declare codigo: string;
   declare nombre: string;
-  declare tipo: "permanente" | "a_termino" | null;
-  declare activo: CreationOptional<boolean>;
+  declare tipo: "permanente" | "a_termino";
+  declare estado: "activa" | "en cierre";
+  declare idAdministrativo: number;
 }
 
 Carrera.init(
@@ -44,19 +47,28 @@ Carrera.init(
     },
     tipo: {
       type: DataTypes.ENUM("permanente", "a_termino"),
-      allowNull: true,
+      allowNull: false,
     },
-    activo: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
+    estado: {
+      type: DataTypes.ENUM("activa", "en cierre"),
+      defaultValue: "activa"
     },
+    idAdministrativo: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: "id_administrativo",
+      references: {
+        model: "administrativos",
+        key: "id"
+      }
+    }
   },
   {
     sequelize,
     tableName: "carreras",
     timestamps: true,
     createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion", // corregido nombre del campo (antes decía "fecha_fecha_actualizacion")
+    updatedAt: "fecha_actualizacion",
   }
 );
 

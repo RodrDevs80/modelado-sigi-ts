@@ -8,6 +8,7 @@ interface InscripcionCarreraAttributes extends InferAttributes<InscripcionCarrer
   fechaDesde: string | null;
   fechaHasta: string | null;
   idPlanDeEstudio: number;
+  idAdministrativo: number;
 }
 
 interface InscripcionCarreraCreationAttributes extends InferCreationAttributes<InscripcionCarrera> {
@@ -16,6 +17,7 @@ interface InscripcionCarreraCreationAttributes extends InferCreationAttributes<I
   fechaDesde: string | null;
   fechaHasta: string | null;
   idPlanDeEstudio: number;
+  idAdministrativo: number;
 }
 
 class InscripcionCarrera extends Model<InscripcionCarreraAttributes, InscripcionCarreraCreationAttributes> {
@@ -25,6 +27,7 @@ class InscripcionCarrera extends Model<InscripcionCarreraAttributes, Inscripcion
   declare fechaDesde: string | null;
   declare fechaHasta: string | null;
   declare idPlanDeEstudio: number;
+  declare idAdministrativo: number;
 }
 
 InscripcionCarrera.init(
@@ -58,6 +61,15 @@ InscripcionCarrera.init(
         key: "id",
       },
     },
+    idAdministrativo: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: "id_administrativo",
+      references: {
+        model: "administrativos",
+        key: "id"
+      }
+    }
   },
   {
     sequelize,

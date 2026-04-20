@@ -1,0 +1,88 @@
+import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes } from "sequelize";
+import sequelize from "../config/database/conexion.js";
+
+interface InstanciaEvaluativaAttributes extends InferAttributes<InstanciaEvaluativa> {
+  id: CreationOptional<number>;
+  idDivisionXUnidadCurricular: number;
+  descripcion: string;
+  fecha: Date;
+  tipo: "trabajo practico" | "parcial" | "examen final" | "recuperatorio" | "coloquio" | "proyecto integrador";
+  idAdministrativo: number;
+}
+
+interface InstanciaEvaluativaCreateAttributes extends InferCreationAttributes<InstanciaEvaluativa> {
+  id: CreationOptional<number>;
+  idDivisionXUnidadCurricular: number;
+  descripcion: string;
+  fecha: Date;
+  tipo: "trabajo practico" | "parcial" | "examen final" | "recuperatorio" | "coloquio" | "proyecto integrador";
+  idAdministrativo: number;
+}
+
+class InstanciaEvaluativa extends Model<InstanciaEvaluativaAttributes, InstanciaEvaluativaCreateAttributes> {
+  declare id: CreationOptional<number>;
+  declare idDivisionXUnidadCurricular: number;
+  declare descripcion: string;
+  declare fecha: Date;
+  declare tipo: "trabajo practico" | "parcial" | "examen final" | "recuperatorio" | "coloquio" | "proyecto integrador";
+  declare idAdministrativo: number;
+}
+
+InstanciaEvaluativa.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    idDivisionXUnidadCurricular: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: "id_division_x_unidad_curricular",
+      references: {
+        model: "division_x_unidad_curricular",
+        key: "id"
+      }
+    },
+    descripcion: {
+      type: DataTypes.STRING(255),
+      allowNull: false
+    },
+    fecha: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        //validar la fecha que no sea anterior a la fecha de la creación de una InstanciaEvaluativa
+        notBeforeToday(value: Date) {
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          if (value < today) {
+            throw new Error('La fecha no puede ser anterior a la fecha actual.');
+          }
+        }
+      }
+    },
+    tipo: {
+      type: DataTypes.ENUM("trabajo practico", "parcial", "examen final", "recuperatorio", "coloquio", "proyecto integrador"),
+      allowNull: false
+    },
+    idAdministrativo: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: "id_administrativo",
+      references: {
+        model: "administrativos",
+        key: "id"
+      }
+    }
+  },
+  {
+    sequelize,
+    tableName: "instancias_evaluativas",
+    timestamps: true,
+    createdAt: "fecha_creacion",
+    updatedAt: "fechas_actualizacion"
+  }
+)
+
+export default InstanciaEvaluativa;
