@@ -2,7 +2,7 @@ import { DataType, Model, InferAttributes, InferCreationAttributes, CreationOpti
 import sequelize from "../config/database/conexion.js";
 
 interface DivisionAttributes extends InferAttributes<Division> {
-  id: CreationOptional<number>;
+  id: number;
   idDocente: number;
   idCurso: number;
   idAdministrativo: number;

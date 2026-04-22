@@ -1,8 +1,8 @@
 import { DataTypes, Model, InferAttributes, InferCreationAttributes, CreationOptional } from "sequelize";
 import sequelize from "../config/database/conexion.js";
 
-interface PlanDeEstudioAttributes extends InferAttributes<PlanDeEstudio> {
-  id: CreationOptional<number>;
+interface PlanEstudioAttributes extends InferAttributes<PlanEstudio> {
+  id: number;
   version: string;
   fechaDeAprobacion: string; // DATEONLY se maneja como string 'YYYY-MM-DD'
   fechaDeCierre: string;
@@ -12,7 +12,8 @@ interface PlanDeEstudioAttributes extends InferAttributes<PlanDeEstudio> {
   idAdministrativo: number;
 }
 
-interface PlanDeEstudioCreationAttributes extends InferCreationAttributes<PlanDeEstudio> {
+interface PlanEstudioCreationAttributes extends InferCreationAttributes<PlanEstudio> {
+  id: CreationOptional<number>;
   version: string;
   fechaDeAprobacion: string;
   fechaDeCierre: string;
@@ -22,7 +23,7 @@ interface PlanDeEstudioCreationAttributes extends InferCreationAttributes<PlanDe
   idAdministrativo: number;
 }
 
-class PlanDeEstudio extends Model<PlanDeEstudioAttributes, PlanDeEstudioCreationAttributes> {
+class PlanEstudio extends Model<PlanEstudioAttributes, PlanEstudioCreationAttributes> {
   declare id: CreationOptional<number>;
   declare version: string;
   declare fechaDeAprobacion: string;
@@ -33,7 +34,7 @@ class PlanDeEstudio extends Model<PlanDeEstudioAttributes, PlanDeEstudioCreation
   declare idAdministrativo: number;
 }
 
-PlanDeEstudio.init(
+PlanEstudio.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -83,11 +84,11 @@ PlanDeEstudio.init(
   },
   {
     sequelize,
-    tableName: "plan_de_estudio",
+    tableName: "planes_estudios",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion",
   }
 );
 
-export default PlanDeEstudio;
+export default PlanEstudio;

@@ -3,21 +3,22 @@ import sequelize from "../config/database/conexion.js";
 import bcrypt from "bcrypt";
 
 interface UsuarioAttributes extends InferAttributes<Usuario> {
+  id: number;
+  nombre: string;
+  apellido: string;
+  email: string;
+  contrasenia: string;
+  activo: boolean;
+  idAdministrativo: number;
+}
+
+interface UsuarioCreationAttributes extends InferCreationAttributes<Usuario> {
   id: CreationOptional<number>;
   nombre: string;
   apellido: string;
   email: string;
   contrasenia: string;
   activo: CreationOptional<boolean>;
-  idAdministrativo: number;
-}
-
-interface UsuarioCreationAttributes extends InferCreationAttributes<Usuario> {
-  nombre: string;
-  apellido: string;
-  email: string;
-  contrasenia: string;
-  activo: boolean;
   idAdministrativo: number;
 }
 

@@ -3,7 +3,7 @@ import Administrativo from "./Administrativo.js";
 import Carrera from "./Carrera.js";
 import Docente from "./Docente.js";
 import InscripcionCarrera from "./InscripcionCarrera.js";
-import PlanDeEstudio from "./PlanDeEstudio.js";
+import PlanEstudio from "./PlanEstudio.js";
 import Rol from "./Rol.js";
 import Usuario from "./Usuario.js";
 
@@ -17,7 +17,7 @@ export {
   Carrera,
   Docente,
   InscripcionCarrera,
-  PlanDeEstudio,
+  PlanEstudio,
   Rol,
   Usuario,
 };

@@ -2,7 +2,7 @@ import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Data
 import sequelize from "../config/database/conexion.js";
 
 interface InstanciaEvaluativaAttributes extends InferAttributes<InstanciaEvaluativa> {
-  id: CreationOptional<number>;
+  id: number;
   idDivisionXUnidadCurricular: number;
   descripcion: string;
   fecha: Date;

@@ -3,7 +3,7 @@ import sequelize from "../config/database/conexion.js";
 import bcrypt from "bcrypt";
 
 interface DocenteAttributes extends InferAttributes<Docente> {
-  id: CreationOptional<number>;
+  id: number;
   nombre: string;
   apellido: string;
   email: string;
@@ -18,6 +18,7 @@ interface DocenteAttributes extends InferAttributes<Docente> {
 }
 
 interface DocenteCreationAttributes extends InferCreationAttributes<Docente> {
+  id: CreationOptional<number>;
   nombre: string;
   apellido: string;
   email: string;
@@ -28,7 +29,7 @@ interface DocenteCreationAttributes extends InferCreationAttributes<Docente> {
   domicilio: string;
   telefono: string;
   idAdministrativo: number;
-  activo: boolean;
+  activo: CreationOptional<boolean>;
 }
 
 class Docente extends Model<DocenteAttributes, DocenteCreationAttributes> {

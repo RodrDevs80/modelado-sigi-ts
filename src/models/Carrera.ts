@@ -2,19 +2,20 @@ import { DataTypes, Model, InferAttributes, InferCreationAttributes, CreationOpt
 import sequelize from "../config/database/conexion.js";
 
 interface CarreraAttributes extends InferAttributes<Carrera> {
-  id: CreationOptional<number>;
+  id: number;
   codigo: string;
   nombre: string;
   tipo: "permanente" | "a_termino";
-  estado: "activa" | "en cierre";
+  activo: boolean;
   idAdministrativo: number;
 }
 
 interface CarreraCreationAttributes extends InferCreationAttributes<Carrera> {
+  id: CreationOptional<number>;
   codigo: string;
   nombre: string;
   tipo: "permanente" | "a_termino";
-  estado: "activa" | "en cierre";
+  activo: CreationOptional<boolean>;
   idAdministrativo: number;
 }
 
@@ -23,7 +24,7 @@ class Carrera extends Model<CarreraAttributes, CarreraCreationAttributes> {
   declare codigo: string;
   declare nombre: string;
   declare tipo: "permanente" | "a_termino";
-  declare estado: "activa" | "en cierre";
+  declare activo: CreationOptional<boolean>;
   declare idAdministrativo: number;
 }
 
@@ -49,9 +50,9 @@ Carrera.init(
       type: DataTypes.ENUM("permanente", "a_termino"),
       allowNull: false,
     },
-    estado: {
-      type: DataTypes.ENUM("activa", "en cierre"),
-      defaultValue: "activa"
+    activo: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     },
     idAdministrativo: {
       type: DataTypes.INTEGER,

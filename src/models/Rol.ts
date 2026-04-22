@@ -3,12 +3,13 @@ import sequelize from "../config/database/conexion.js";
 
 
 interface RolAttributes extends InferAttributes<Rol> {
-  id: CreationOptional<number>;
+  id: number;
   nombre: string;
   descripcion: string;
 }
 
 interface RolCreationAttributes extends InferCreationAttributes<Rol> {
+  id: CreationOptional<number>;
   nombre: string;
   descripcion: string;
 }

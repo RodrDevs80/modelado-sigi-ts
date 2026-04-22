@@ -1,51 +1,65 @@
 import { DataTypes, Model, InferAttributes, InferCreationAttributes, CreationOptional } from "sequelize";
 import sequelize from "../config/database/conexion.js";
 
-interface CorrelatividadAttributes extends InferAttributes<Correlatividad> {
+interface LegajoAttributes extends InferAttributes<Legajo> {
   id: number;
-  idUnidadCurricular: number;
-  idUnidadUnidadCurricularCorrelativa: number;
+  idEstudiante: number;
+  numeroLegajo: number;
+  idPlanEstudio: number;
+  activo: CreationOptional<boolean>;
   idAdministrativo: number;
 }
-
-interface CorrelatividadCreationAttributes extends InferCreationAttributes<Correlatividad> {
+interface LegajoCreationAttributes extends InferCreationAttributes<Legajo> {
   id: CreationOptional<number>;
-  idUnidadCurricular: number;
-  idUnidadUnidadCurricularCorrelativa: number;
+  idEstudiante: number;
+  numeroLegajo: number;
+  idPlanEstudio: number;
+  activo: CreationOptional<boolean>;
   idAdministrativo: number;
 }
 
-class Correlatividad extends Model<CorrelatividadAttributes, CorrelatividadCreationAttributes> {
+class Legajo extends Model<LegajoAttributes, LegajoCreationAttributes> {
   declare id: CreationOptional<number>;
-  declare idUnidadCurricular: number;
-  declare idUnidadUnidadCurricularCorrelativa: number;
+  declare idEstudiante: number;
+  declare numeroLegajo: number;
+  declare idPlanEstudio: number;
+  declare activo: CreationOptional<boolean>;
   declare idAdministrativo: number;
 }
 
-Correlatividad.init(
+
+Legajo.init(
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
-    idUnidadCurricular: {
+    idEstudiante: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: "id_unidad_curricular",
+      field: "id_estudiante",
       references: {
-        model: "unidad_curricular",
+        model: "estudiantes",
         key: "id"
       }
     },
-    idUnidadUnidadCurricularCorrelativa: {
+    numeroLegajo: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    idPlanEstudio: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: "id_unidad_curricular_correlativa",
+      field: "id_plan_estudio",
       references: {
-        model: "unidad_curricular",
+        model: "planes_estudios",
         key: "id"
       }
+    },
+    activo: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     },
     idAdministrativo: {
       type: DataTypes.INTEGER,
@@ -59,11 +73,11 @@ Correlatividad.init(
   },
   {
     sequelize,
-    tableName: "correlatividades",
+    tableName: "legajos",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion"
   }
 )
 
-export default Correlatividad;
+export default Legajo;

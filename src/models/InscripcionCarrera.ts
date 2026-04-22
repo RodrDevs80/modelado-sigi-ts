@@ -2,31 +2,29 @@ import { DataTypes, Model, InferAttributes, InferCreationAttributes, CreationOpt
 import sequelize from "../config/database/conexion.js";
 
 interface InscripcionCarreraAttributes extends InferAttributes<InscripcionCarrera> {
-  id: CreationOptional<number>;
+  id: number;
   cupo: number | null;
-  regularidadCarrera: string | null;
   fechaDesde: string | null;
   fechaHasta: string | null;
-  idPlanDeEstudio: number;
+  idPlanEstudio: number;
   idAdministrativo: number;
 }
 
 interface InscripcionCarreraCreationAttributes extends InferCreationAttributes<InscripcionCarrera> {
+  id: CreationOptional<number>;
   cupo: number | null;
-  regularidadCarrera: string | null;
   fechaDesde: string | null;
   fechaHasta: string | null;
-  idPlanDeEstudio: number;
+  idPlanEstudio: number;
   idAdministrativo: number;
 }
 
 class InscripcionCarrera extends Model<InscripcionCarreraAttributes, InscripcionCarreraCreationAttributes> {
   declare id: CreationOptional<number>;
   declare cupo: number | null;
-  declare regularidadCarrera: string | null;
   declare fechaDesde: string | null;
   declare fechaHasta: string | null;
-  declare idPlanDeEstudio: number;
+  declare idPlanEstudio: number;
   declare idAdministrativo: number;
 }
 
@@ -41,10 +39,6 @@ InscripcionCarrera.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    regularidadCarrera: {
-      type: DataTypes.STRING,
-      field: "regularidad_carrera",
-    },
     fechaDesde: {
       type: DataTypes.DATEONLY,
       field: "fecha_desde",
@@ -53,11 +47,12 @@ InscripcionCarrera.init(
       type: DataTypes.DATEONLY,
       field: "fecha_hasta",
     },
-    idPlanDeEstudio: {
+    idPlanEstudio: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: "id_plan_estudio",
       references: {
-        model: "plan_de_estudio",
+        model: "planes_estudios",
         key: "id",
       },
     },
@@ -73,7 +68,7 @@ InscripcionCarrera.init(
   },
   {
     sequelize,
-    tableName: "inscripcion_carrera",
+    tableName: "inscripciones_carreras",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion",

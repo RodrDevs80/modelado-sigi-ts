@@ -3,7 +3,7 @@ import sequelize from "../config/database/conexion.js";
 
 
 interface EstudianteAttributes extends InferAttributes<Estudiante> {
-  id: CreationOptional<number>;
+  id: number;
   dni: number;
   nombre: string;
   apellido: string;
@@ -21,7 +21,7 @@ interface EstudianteCreationAttributes extends InferCreationAttributes<Estudiant
   apellido: string;
   email: string;
   trabaja: boolean | null;
-  activo: boolean;
+  activo: CreationOptional<boolean>;
   idUsuario: number;
   idAdministrativo: number;
 }
@@ -33,7 +33,7 @@ class Estudiante extends Model<EstudianteAttributes, EstudianteCreationAttribute
   declare apellido: string;
   declare email: string;
   declare trabaja: boolean | null;
-  declare activo: boolean;
+  declare activo: CreationOptional<boolean>;
   declare idUsuario: number;
   declare idAdministrativo: number;
 }

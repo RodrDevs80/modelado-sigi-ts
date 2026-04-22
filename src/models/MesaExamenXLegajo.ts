@@ -2,7 +2,7 @@ import { DataTypes, Model, InferAttributes, InferCreationAttributes, CreationOpt
 import sequelize from "../config/database/conexion.js";
 
 interface MesaExamenXLegajoAttributes extends InferAttributes<MesaExamenXLegajo> {
-  id: CreationOptional<number>;
+  id: number;
   idMesaExamen: number;
   idLegajo: number;
   condicion: "regular" | "libre";

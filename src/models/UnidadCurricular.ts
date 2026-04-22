@@ -2,10 +2,10 @@ import { DataTypes, Model, InferAttributes, InferCreationAttributes, CreationOpt
 import sequelize from "../config/database/conexion.js";
 
 interface UnidadCurricularAttributes extends InferAttributes<UnidadCurricular> {
-  id: CreationOptional<number>;
+  id: number;
   idPlanEstudio: number;
   nombre: string;
-  tipo: "asignatura" | "taller" | "seminario" | "modulo" | "proyecto" | "practica";
+  //tipo: "asignatura" | "taller" | "seminario" | "modulo" | "proyecto" | "practica";
   duracion: "anual" | "cuatrimestral";
   cargaHoraria: number;
   cuatrimestre: "primero" | "segundo" | null;
@@ -16,7 +16,7 @@ interface UnidadCurricularCreationAttributes extends InferCreationAttributes<Uni
   id: CreationOptional<number>;
   idPlanEstudio: number;
   nombre: string;
-  tipo: "asignatura" | "taller" | "seminario" | "modulo" | "proyecto" | "practica";
+  //tipo: "asignatura" | "taller" | "seminario" | "modulo" | "proyecto" | "practica";
   duracion: "anual" | "cuatrimestral";
   cargaHoraria: number;
   cuatrimestre: "primero" | "segundo" | null;
@@ -27,7 +27,7 @@ class UnidadCurricular extends Model<UnidadCurricularAttributes, UnidadCurricula
   declare id: CreationOptional<number>;
   declare idPlanEstudio: number;
   declare nombre: string;
-  declare tipo: "asignatura" | "taller" | "seminario" | "modulo" | "proyecto" | "practica";
+  //declare tipo: "asignatura" | "taller" | "seminario" | "modulo" | "proyecto" | "practica";
   declare duracion: "anual" | "cuatrimestral";
   declare cargaHoraria: number;
   declare cuatrimestre: "primero" | "segundo" | null;
@@ -57,10 +57,10 @@ UnidadCurricular.init(
         notEmpty: { msg: "El nombre es obligatorio" },
       },
     },
-    tipo: {
-      type: DataTypes.ENUM("asignatura", "taller", "seminario", "modulo", "proyecto", "practica"),
-      allowNull: false
-    },
+    // tipo: {
+    //   type: DataTypes.ENUM("asignatura", "taller", "seminario", "modulo", "proyecto", "practica"),
+    //   allowNull: false
+    // },
     duracion: {
       type: DataTypes.ENUM("anual", "cuatrimestral"),
       allowNull: false

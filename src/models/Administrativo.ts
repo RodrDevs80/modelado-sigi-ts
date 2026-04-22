@@ -3,6 +3,18 @@ import sequelize from "../config/database/conexion.js";
 import bcrypt from "bcrypt";
 
 interface AdministrativoAttributes extends InferAttributes<Administrativo> {
+  id: number;
+  nombre: string;
+  apellido: string;
+  email: string;
+  dni: string;
+  contrasenia: string;
+  telefono: string;
+  idRol: number;
+  activo: boolean;
+}
+
+interface AdministrativoCreationAttributes extends InferCreationAttributes<Administrativo> {
   id: CreationOptional<number>;
   nombre: string;
   apellido: string;
@@ -12,17 +24,6 @@ interface AdministrativoAttributes extends InferAttributes<Administrativo> {
   telefono: string;
   idRol: number;
   activo: CreationOptional<boolean>;
-}
-
-interface AdministrativoCreationAttributes extends InferCreationAttributes<Administrativo> {
-  nombre: string;
-  apellido: string;
-  email: string;
-  dni: string;
-  contrasenia: string;
-  telefono: string;
-  idRol: number;
-  activo: boolean;
 }
 
 class Administrativo extends Model<AdministrativoAttributes, AdministrativoCreationAttributes> {
