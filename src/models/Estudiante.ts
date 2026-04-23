@@ -1,4 +1,4 @@
-import { DataType, Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes } from "sequelize";
+import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes } from "sequelize";
 import sequelize from "../config/database/conexion.js";
 
 
