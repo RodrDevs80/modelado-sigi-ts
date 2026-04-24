@@ -40,7 +40,7 @@ InstanciaEvaluativa.init(
       allowNull: false,
       field: "id_division_x_unidad_curricular",
       references: {
-        model: "division_x_unidad_curricular",
+        model: "divisiones_x_unidades_curriculares",
         key: "id"
       }
     },

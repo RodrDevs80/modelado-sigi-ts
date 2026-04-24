@@ -58,7 +58,7 @@ Division.init(
   },
   {
     sequelize,
-    tableName: "division",
+    tableName: "divisiones",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion"

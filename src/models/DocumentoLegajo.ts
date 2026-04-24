@@ -54,7 +54,7 @@ DocumentoLegajo.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       field: "id_tipo_documento_requerido",
-      references: { model: "tipos_documento_requerido", key: "id" },
+      references: { model: "tipos_documentos_requeridos", key: "id" },
     },
     idUsuarioCarga: {
       type: DataTypes.INTEGER,
@@ -91,7 +91,7 @@ DocumentoLegajo.init(
   },
   {
     sequelize,
-    tableName: "documentos_legajo",
+    tableName: "documentos_legajos",
     timestamps: false,
   }
 );

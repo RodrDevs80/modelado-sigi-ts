@@ -82,7 +82,7 @@ SesionUsuario.init(
   },
   {
     sequelize,
-    tableName: "sesiones_usuario",
+    tableName: "sesiones_usuarios",
     timestamps: false,
   }
 );

@@ -65,7 +65,7 @@ TurnoExamen.init(
   },
   {
     sequelize,
-    tableName: "turnos_examen",
+    tableName: "turnos_examenes",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion",

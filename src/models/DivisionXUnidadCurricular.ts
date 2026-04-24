@@ -51,7 +51,7 @@ DivisionXUnidadCurricular.init(
   },
   {
     sequelize,
-    tableName: "divisiones_x_unidad_curricular",
+    tableName: "divisiones_x_unidades_curriculares",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion",

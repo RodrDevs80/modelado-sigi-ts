@@ -73,7 +73,7 @@ RecuperacionContrasenia.init(
   },
   {
     sequelize,
-    tableName: "recuperaciones_contrasenia",
+    tableName: "recuperaciones_contrasenias",
     timestamps: false,
   }
 );

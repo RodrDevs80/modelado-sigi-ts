@@ -80,7 +80,7 @@ ComprobanteAlumno.init(
   },
   {
     sequelize,
-    tableName: "comprobantes_alumno",
+    tableName: "comprobantes_alumnos",
     timestamps: false,
   }
 );

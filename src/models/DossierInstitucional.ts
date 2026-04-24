@@ -93,7 +93,7 @@ DossierInstitucional.init(
   },
   {
     sequelize,
-    tableName: "dossier_institucional",
+    tableName: "dossiers_institucionales",
     timestamps: false,
   }
 );

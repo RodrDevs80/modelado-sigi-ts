@@ -79,7 +79,7 @@ TipoDocumentoRequerido.init(
   },
   {
     sequelize,
-    tableName: "tipos_documento_requerido",
+    tableName: "tipos_documentos_requeridos",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion",

@@ -97,7 +97,7 @@ MesaExamenXLegajo.init(
   },
   {
     sequelize,
-    tableName: "mesas_examen_x_legajo",
+    tableName: "mesas_examenes_x_legajos",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion"

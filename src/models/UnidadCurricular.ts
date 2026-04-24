@@ -46,7 +46,7 @@ UnidadCurricular.init(
       allowNull: false,
       field: "id_plan_estudio",
       references: {
-        model: "plan_estudio",
+        model: "planes_estudios",
         key: "id"
       }
     },
@@ -85,7 +85,7 @@ UnidadCurricular.init(
   },
   {
     sequelize,
-    tableName: "unidad_curricular",
+    tableName: "unidades_curriculares",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion",

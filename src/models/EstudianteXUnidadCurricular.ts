@@ -40,7 +40,7 @@ EstudianteXUnidadCurricular.init(
       allowNull: false,
       field: "id_division_x_unidad_curricular",
       references: {
-        model: "division_x_unidad_curricular",
+        model: "divisiones_x_unidades_curriculares",
         key: "id"
       }
     },
@@ -49,7 +49,7 @@ EstudianteXUnidadCurricular.init(
       allowNull: false,
       field: "id_legajo",
       references: {
-        model: "legajo",
+        model: "legajos",
         key: "id"
       }
     },
@@ -74,7 +74,7 @@ EstudianteXUnidadCurricular.init(
   },
   {
     sequelize,
-    tableName: "estudiante_x_unidad_curricular",
+    tableName: "estudiantes_x_unidades_curriculares",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion",

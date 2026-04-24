@@ -66,7 +66,7 @@ MesaExamen.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       field: "turno_examen_id",
-      references: { model: "turnos_examen", key: "id" },
+      references: { model: "turnos_examenes", key: "id" },
     },
     unidadCurricularId: {
       type: DataTypes.INTEGER,
@@ -137,7 +137,7 @@ MesaExamen.init(
   },
   {
     sequelize,
-    tableName: "mesas_examen",
+    tableName: "mesas_examenes",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion",

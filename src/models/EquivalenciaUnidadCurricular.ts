@@ -83,7 +83,7 @@ EquivalenciaUnidadCurricular.init(
   },
   {
     sequelize,
-    tableName: "equivalencias_unidad_curricular",
+    tableName: "equivalencias_unidades_curriculares",
     timestamps: true,
     createdAt: "fecha_creacion",
     updatedAt: "fecha_actualizacion",

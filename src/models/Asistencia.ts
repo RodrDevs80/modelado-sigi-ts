@@ -40,7 +40,7 @@ Asistencia.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       field: "id_division_x_unidad_curricular",
-      references: { model: "divisiones_x_unidad_curricular", key: "id" },
+      references: { model: "divisiones_x_unidades_curriculares", key: "id" },
     },
     fecha: {
       type: DataTypes.DATEONLY,

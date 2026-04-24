@@ -34,7 +34,7 @@ Correlatividad.init(
       allowNull: false,
       field: "id_unidad_curricular",
       references: {
-        model: "unidad_curricular",
+        model: "unidades_curriculares",
         key: "id"
       }
     },
@@ -43,7 +43,7 @@ Correlatividad.init(
       allowNull: false,
       field: "id_unidad_curricular_correlativa",
       references: {
-        model: "unidad_curricular",
+        model: "unidades_curriculares",
         key: "id"
       }
     },
