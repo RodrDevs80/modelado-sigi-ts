@@ -53,8 +53,12 @@ DivisionXUnidadCurricular.init(
     sequelize,
     tableName: "divisiones_x_unidades_curriculares",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_division"] },
+      { fields: ["id_unidad_curricular"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 );
 

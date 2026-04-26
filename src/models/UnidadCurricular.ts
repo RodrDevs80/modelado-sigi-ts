@@ -87,8 +87,12 @@ UnidadCurricular.init(
     sequelize,
     tableName: "unidades_curriculares",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_plan_estudio"] },
+      { fields: ["nombre"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 )
 

@@ -80,8 +80,13 @@ InstanciaEvaluativa.init(
     sequelize,
     tableName: "instancias_evaluativas",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fechas_actualizacion"
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_division_x_unidad_curricular"] },
+      { fields: ["fecha"] },
+      { fields: ["tipo"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 )
 

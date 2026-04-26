@@ -7,6 +7,7 @@ interface CicloLectivoAttributes extends InferAttributes<CicloLectivo> {
     activo: boolean;
     fechaInicio: string;
     fechaFin: string;
+    idPlanEstudio: number
     idAdministrativo: number;
 }
 interface CicloLectivoCreationAttributes extends InferCreationAttributes<CicloLectivo> {
@@ -15,6 +16,7 @@ interface CicloLectivoCreationAttributes extends InferCreationAttributes<CicloLe
     activo: CreationOptional<boolean>;
     fechaInicio: string;
     fechaFin: string;
+    idPlanEstudio: number
     idAdministrativo: number;
 }
 
@@ -24,6 +26,7 @@ class CicloLectivo extends Model<CicloLectivoAttributes, CicloLectivoCreationAtt
     declare activo: CreationOptional<boolean>;
     declare fechaInicio: string;
     declare fechaFin: string;
+    declare idPlanEstudio: number;
     declare idAdministrativo: number;
 }
 
@@ -50,6 +53,15 @@ CicloLectivo.init(
             type: DataTypes.DATEONLY,
             allowNull: false
         },
+        idPlanEstudio: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            field: "id_plan_estudio",
+            references: {
+                model: "planes_estudios",
+                key: "id"
+            }
+        },
         idAdministrativo: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -64,8 +76,8 @@ CicloLectivo.init(
         sequelize,
         tableName: "ciclos_lectivos",
         timestamps: true,
-        createdAt: "fecha_creacion",
-        updatedAt: "fecha_actualizacion"
+        // Opcional: índices para optimizar consultas
+        indexes: [{ unique: true, fields: ["anio"] }],
     }
 )
 

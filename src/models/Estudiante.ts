@@ -109,8 +109,13 @@ Estudiante.init(
     sequelize,
     tableName: "estudiantes",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion"
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["dni"] },
+      { fields: ["email"] },
+      { fields: ["id_administrativo"] },
+      { fields: ["id_usuario"] }
+    ]
   }
 )
 

@@ -123,8 +123,10 @@ DesignacionesDocente.init(
     sequelize,
     tableName: "designaciones_docentes",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion"
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_docente"] },
+    ]
   }
 )
 

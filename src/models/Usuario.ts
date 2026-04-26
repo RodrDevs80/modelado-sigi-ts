@@ -85,8 +85,6 @@ Usuario.init(
     sequelize,
     tableName: "usuarios",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
     paranoid: false,
     indexes: [{ unique: true, fields: ["email"] }],
     hooks: {

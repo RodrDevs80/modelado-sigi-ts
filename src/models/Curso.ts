@@ -64,8 +64,11 @@ Curso.init(
         sequelize,
         tableName: "cursos",
         timestamps: true,
-        createdAt: "fecha_creacion",
-        updatedAt: "fecha_actualizacion"
+        // Opcional: índices para optimizar consultas
+        indexes: [
+            { fields: ["anio_academico"] },
+            { fields: ["id_ciclo_lectivo"] }
+        ]
     }
 )
 

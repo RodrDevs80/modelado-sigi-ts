@@ -46,8 +46,10 @@ Rol.init(
     sequelize,
     tableName: "roles",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["nombre"] }
+    ]
   }
 );
 

@@ -81,8 +81,12 @@ TipoDocumentoRequerido.init(
     sequelize,
     tableName: "tipos_documentos_requeridos",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_carrera"] },
+      { fields: ["nombre_documento"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 );
 

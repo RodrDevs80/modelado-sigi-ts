@@ -70,8 +70,11 @@ InscripcionCarrera.init(
     sequelize,
     tableName: "inscripciones_carreras",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_plan_estudio"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 );
 

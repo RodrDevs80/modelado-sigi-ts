@@ -86,8 +86,11 @@ PlanEstudio.init(
     sequelize,
     tableName: "planes_estudios",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_carrera"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 );
 

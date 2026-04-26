@@ -9,6 +9,9 @@ interface PreinscriptoAttributes extends InferAttributes<Preinscripto> {
   cus: string;
   isa: string;
   emmac: string | null;
+  analitico: string;
+  partidaNacimiento: string;
+  foto: string;
   estado: "pendiente" | "aprobado" | "rechazado";
   idAdministrativo: number;
 }
@@ -20,6 +23,9 @@ interface PreinscriptoCreationAttributes extends InferCreationAttributes<Preinsc
   cus: string;
   isa: string;
   emmac: string | null;
+  analitico: string;
+  partidaNacimiento: string;
+  foto: string;
   estado: CreationOptional<"pendiente" | "aprobado" | "rechazado">;
   idAdministrativo: number;
 }
@@ -32,6 +38,9 @@ class Preinscripto extends Model<PreinscriptoAttributes, PreinscriptoCreationAtt
   declare cus: string;
   declare isa: string;
   declare emmac: string | null;
+  declare analitico: string;
+  declare partidaNacimiento: string;
+  declare foto: string;
   declare estado: CreationOptional<"pendiente" | "aprobado" | "rechazado">;
   declare idAdministrativo: number;
 }
@@ -77,6 +86,19 @@ Preinscripto.init(
       type: DataTypes.STRING,
       allowNull: true
     },
+    analitico: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    partidaNacimiento: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      field: "partida_nacimiento"
+    },
+    foto: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     estado: {
       type: DataTypes.ENUM("pendiente", "aprobado", "rechazado"),
       defaultValue: "pendiente"
@@ -93,16 +115,14 @@ Preinscripto.init(
   },
   {
     sequelize,
-    indexes: [
-      { fields: ['id_inscripcion'] },
-      { fields: ['id_usuario'] },
-      { fields: ['id_administrativo'] },
-      { fields: ['estado'] }
-    ],
     tableName: "preinscriptos",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion"
+    indexes: [
+      { fields: ["id_inscripcion"] },
+      { fields: ["id_usuario"] },
+      { fields: ["estado"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 )
 

@@ -67,8 +67,11 @@ TurnoExamen.init(
     sequelize,
     tableName: "turnos_examenes",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_ciclo_lectivo"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 );
 

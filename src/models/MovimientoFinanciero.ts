@@ -90,8 +90,11 @@ MovimientoFinanciero.init(
     sequelize,
     tableName: "movimientos_financieros",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_estudiante"] },
+      { fields: ["tipo"] },
+    ]
   }
 );
 

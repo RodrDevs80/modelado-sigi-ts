@@ -111,8 +111,7 @@ Administrativo.init(
   {
     sequelize,
     tableName: "administrativos",
-    createdAt: "fecha_de_alta",
-    updatedAt: "fecha_actualizacion",
+    timestamps: true,
     paranoid: false,
     indexes: [
       { unique: true, fields: ["email"] },

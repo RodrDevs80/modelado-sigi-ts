@@ -60,8 +60,13 @@ Division.init(
     sequelize,
     tableName: "divisiones",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion"
+    // Opcional: índices para optimizar consultas
+    // Evitan que la base de datos escanee toda la tabla cada vez que se consulte por esas claves.
+    indexes: [
+      { fields: ["id_docente"] },
+      { fields: ["id_curso"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 )
 

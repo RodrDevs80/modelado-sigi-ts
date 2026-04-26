@@ -67,8 +67,6 @@ Asistencia.init(
     sequelize,
     tableName: "asistencias",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
     // Opcional: índice único para evitar doble asistencia misma fecha/alumno/comisión
     indexes: [{ unique: true, fields: ["id_division_x_unidad_curricular", "fecha", "id_legajo"] }],
   }

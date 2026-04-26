@@ -36,9 +36,7 @@ import TurnoExamen from "./TurnoExamen.js";
 import UnidadCurricular from "./UnidadCurricular.js";
 import Usuario from "./Usuario.js";
 
-// ============================================================================
 // DEFINICIÓN DE ASOCIACIONES
-// ============================================================================
 
 // ---------- Rol ----------
 Rol.hasMany(Administrativo, { foreignKey: "idRol" });
@@ -272,9 +270,7 @@ TipoDocumentoRequerido.hasMany(DocumentoLegajo, { foreignKey: "idTipoDocumentoRe
 
 DocumentoLegajo.belongsTo(TipoDocumentoRequerido, { foreignKey: "idTipoDocumentoRequerido" });
 
-// ============================================================================
-// EXPORTAR TODO
-// ============================================================================
+
 export {
   sequelize,
   Administrativo,

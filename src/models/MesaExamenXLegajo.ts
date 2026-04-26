@@ -99,8 +99,15 @@ MesaExamenXLegajo.init(
     sequelize,
     tableName: "mesas_examenes_x_legajos",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion"
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_mesa_examen"] },
+      { fields: ["id_legajo"] },
+      { fields: ["fecha_inscripcion"] },
+      { fields: ["condicion"] },
+      { fields: ["resultado"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 )
 

@@ -76,8 +76,14 @@ EstudianteXUnidadCurricular.init(
     sequelize,
     tableName: "estudiantes_x_unidades_curriculares",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { fields: ["id_division_x_unidad_curricular"] },
+      { fields: ["id_legajo"] },
+      { fields: ["fecha_de_inscripcion"] },
+      { fields: ["condicion"] },
+      { fields: ["id_administrativo"] }
+    ]
   }
 );
 

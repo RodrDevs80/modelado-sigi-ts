@@ -61,8 +61,8 @@ Correlatividad.init(
     sequelize,
     tableName: "correlatividades",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion"
+    // Opcional: índice único para evitar duplicados
+    indexes: [{ unique: true, fields: ["id_unidad_curricular", "id_unidad_curricular_correlativa"] }]
   }
 )
 

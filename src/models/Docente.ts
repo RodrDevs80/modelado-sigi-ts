@@ -129,7 +129,6 @@ Docente.init(
     sequelize,
     tableName: "docentes",
     createdAt: "fecha_de_alta",
-    updatedAt: "fecha_actualizacion",
     paranoid: false,
     indexes: [
       { unique: true, fields: ["email"] },

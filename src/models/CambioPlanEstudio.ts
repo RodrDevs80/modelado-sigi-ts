@@ -109,8 +109,6 @@ CambioPlanEstudio.init(
     sequelize,
     tableName: "cambios_planes_estudios",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
   }
 );
 

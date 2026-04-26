@@ -7,6 +7,9 @@ interface CarreraAttributes extends InferAttributes<Carrera> {
   nombre: string;
   tipo: "permanente" | "a_termino";
   activo: boolean;
+  imagen: string | null;
+  descripcion: string | null;
+  dossier: string | null;
   idAdministrativo: number;
 }
 
@@ -16,6 +19,9 @@ interface CarreraCreationAttributes extends InferCreationAttributes<Carrera> {
   nombre: string;
   tipo: "permanente" | "a_termino";
   activo: CreationOptional<boolean>;
+  imagen: string | null;
+  descripcion: string | null;
+  dossier: string | null;
   idAdministrativo: number;
 }
 
@@ -24,6 +30,9 @@ class Carrera extends Model<CarreraAttributes, CarreraCreationAttributes> {
   declare codigo: string;
   declare nombre: string;
   declare tipo: "permanente" | "a_termino";
+  declare imagen: string | null;
+  declare descripcion: string | null;
+  declare dossier: string | null;
   declare activo: CreationOptional<boolean>;
   declare idAdministrativo: number;
 }
@@ -50,6 +59,18 @@ Carrera.init(
       type: DataTypes.ENUM("permanente", "a_termino"),
       allowNull: false,
     },
+    imagen: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    descripcion: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    dossier: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     activo: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
@@ -68,8 +89,11 @@ Carrera.init(
     sequelize,
     tableName: "carreras",
     timestamps: true,
-    createdAt: "fecha_creacion",
-    updatedAt: "fecha_actualizacion",
+    // Opcional: índices para optimizar consultas
+    indexes: [
+      { unique: true, fields: ["codigo"] },
+      { fields: ["nombre"] }
+    ],
   }
 );
 
