@@ -73,7 +73,7 @@ InscripcionCarrera.init(
     // Opcional: índices para optimizar consultas
     indexes: [
       { fields: ["id_plan_estudio"] },
-      { fields: ["id_administrativo"] }
+      { fields: ["id_administrativo"] },
     ]
   }
 );

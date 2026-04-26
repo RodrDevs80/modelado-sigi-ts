@@ -67,6 +67,7 @@ PlanEstudio.init(
     idCarrera: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: "id_carrera",
       references: {
         model: "carreras",
         key: "id",

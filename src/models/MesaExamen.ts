@@ -144,7 +144,7 @@ MesaExamen.init(
       { fields: ["turno_examen_id"] },
       { fields: ["unidad_curricular_id"] },
       { fields: ["fecha"] },
-      { fields: ["id_administrativo"] }
+      { fields: ["id_administrativo"] },
     ]
   }
 );

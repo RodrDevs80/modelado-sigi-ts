@@ -85,7 +85,7 @@ TipoDocumentoRequerido.init(
     indexes: [
       { fields: ["id_carrera"] },
       { fields: ["nombre_documento"] },
-      { fields: ["id_administrativo"] }
+      { fields: ["id_administrativo"] },
     ]
   }
 );

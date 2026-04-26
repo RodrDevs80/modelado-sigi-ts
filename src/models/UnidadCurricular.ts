@@ -91,7 +91,7 @@ UnidadCurricular.init(
     indexes: [
       { fields: ["id_plan_estudio"] },
       { fields: ["nombre"] },
-      { fields: ["id_administrativo"] }
+      { fields: ["id_administrativo"] },
     ]
   }
 )

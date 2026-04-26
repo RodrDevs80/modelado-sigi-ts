@@ -79,7 +79,7 @@ Legajo.init(
     indexes: [
       { fields: ["id_estudiante"] },
       { fields: ["id_plan_estudio"] },
-      { fields: ["id_administrativo"] }
+      { fields: ["id_administrativo"] },
     ]
   }
 )

@@ -82,10 +82,10 @@ InstanciaEvaluativa.init(
     timestamps: true,
     // Opcional: índices para optimizar consultas
     indexes: [
-      { fields: ["id_division_x_unidad_curricular"] },
+      { fields: ["id_division_x_unidad_curricular"], name: "idx_div_u_admin" },
       { fields: ["fecha"] },
       { fields: ["tipo"] },
-      { fields: ["id_administrativo"] }
+      { fields: ["id_administrativo"] },
     ]
   }
 )

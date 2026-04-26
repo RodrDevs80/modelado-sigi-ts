@@ -75,13 +75,6 @@ LegajoXInstanciaEvaluativa.init(
     sequelize,
     tableName: "legajos_x_instancias_evaluativas",
     timestamps: true,
-    // Opcional: índices para optimizar consultas
-    indexes: [
-      { fields: ["id_instancia_evaluativa"] },
-      { fields: ["id_legajo"] },
-      { fields: ["fecha_registro"] },
-      { fields: ["id_administrativo"] }
-    ]
   }
 )
 

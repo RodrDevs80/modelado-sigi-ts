@@ -62,7 +62,10 @@ Correlatividad.init(
     tableName: "correlatividades",
     timestamps: true,
     // Opcional: índice único para evitar duplicados
-    indexes: [{ unique: true, fields: ["id_unidad_curricular", "id_unidad_curricular_correlativa"] }]
+    indexes: [{
+      unique: true, fields: ["id_unidad_curricular", "id_unidad_curricular_correlativa"],
+      name: "un_correlatividad_unidades"
+    }]
   }
 )
 

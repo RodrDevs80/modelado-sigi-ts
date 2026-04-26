@@ -57,7 +57,7 @@ DivisionXUnidadCurricular.init(
     indexes: [
       { fields: ["id_division"] },
       { fields: ["id_unidad_curricular"] },
-      { fields: ["id_administrativo"] }
+      { fields: ["id_administrativo"] },
     ]
   }
 );

@@ -68,7 +68,10 @@ Asistencia.init(
     tableName: "asistencias",
     timestamps: true,
     // Opcional: índice único para evitar doble asistencia misma fecha/alumno/comisión
-    indexes: [{ unique: true, fields: ["id_division_x_unidad_curricular", "fecha", "id_legajo"] }],
+    indexes: [{
+      unique: true, fields: ["id_division_x_unidad_curricular", "fecha", "id_legajo"],
+      name: "un_asistencia_alumno_div_fecha"
+    }],
   }
 );
 

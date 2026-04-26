@@ -114,7 +114,8 @@ Estudiante.init(
       { fields: ["dni"] },
       { fields: ["email"] },
       { fields: ["id_administrativo"] },
-      { fields: ["id_usuario"] }
+      { fields: ["id_usuario"] },
+      { name: "idx_est_dni_email", unique: true, fields: ["dni", "email"] }
     ]
   }
 )

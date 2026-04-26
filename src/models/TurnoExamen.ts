@@ -70,7 +70,7 @@ TurnoExamen.init(
     // Opcional: índices para optimizar consultas
     indexes: [
       { fields: ["id_ciclo_lectivo"] },
-      { fields: ["id_administrativo"] }
+      { fields: ["id_administrativo"] },
     ]
   }
 );

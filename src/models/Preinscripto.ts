@@ -121,7 +121,7 @@ Preinscripto.init(
       { fields: ["id_inscripcion"] },
       { fields: ["id_usuario"] },
       { fields: ["estado"] },
-      { fields: ["id_administrativo"] }
+      { fields: ["id_administrativo"] },
     ]
   }
 )

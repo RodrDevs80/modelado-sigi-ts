@@ -66,6 +66,7 @@ MesaExamenXLegajo.init(
     fechaInscripcion: {
       type: DataTypes.DATE,
       allowNull: false,
+      field: "fecha_inscripcion",
       validate: {
         //validar la fecha
         notBeforeToday(value: Date) {

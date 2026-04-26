@@ -18,6 +18,7 @@ import DossierInstitucional from "./DossierInstitucional.js";
 import EquivalenciaUnidadCurricular from "./EquivalenciaUnidadCurricular.js";
 import Estudiante from "./Estudiante.js";
 import EstudianteXUnidadCurricular from "./EstudianteXUnidadCurricular.js";
+import InformacionExtra from "./InformacionExtra.js"; // ✅ NUEVO IMPORT
 import InscripcionCarrera from "./InscripcionCarrera.js";
 import InstanciaEvaluativa from "./InstanciaEvaluativa.js";
 import Legajo from "./Legajo.js";
@@ -36,14 +37,13 @@ import TurnoExamen from "./TurnoExamen.js";
 import UnidadCurricular from "./UnidadCurricular.js";
 import Usuario from "./Usuario.js";
 
-// DEFINICIÓN DE ASOCIACIONES
+// Definir las asociaciones entre los modelos
 
 // ---------- Rol ----------
 Rol.hasMany(Administrativo, { foreignKey: "idRol" });
 Administrativo.belongsTo(Rol, { foreignKey: "idRol" });
 
 // ---------- Administrativo (es el creador/base de casi todo) ----------
-// Un Administrativo tiene muchos registros en todas las tablas que referencian idAdministrativo
 Administrativo.hasMany(Asistencia, { foreignKey: "idAdministrativo" });
 Administrativo.hasMany(CambioPlanEstudio, { foreignKey: "idAdministrativo" });
 Administrativo.hasMany(Carrera, { foreignKey: "idAdministrativo" });
@@ -60,6 +60,7 @@ Administrativo.hasMany(DossierInstitucional, { foreignKey: "idAdministrativo" })
 Administrativo.hasMany(EquivalenciaUnidadCurricular, { foreignKey: "idAdministrativo" });
 Administrativo.hasMany(Estudiante, { foreignKey: "idAdministrativo" });
 Administrativo.hasMany(EstudianteXUnidadCurricular, { foreignKey: "idAdministrativo" });
+Administrativo.hasMany(InformacionExtra, { foreignKey: "idAdministrativo" }); // ✅ NUEVO
 Administrativo.hasMany(InscripcionCarrera, { foreignKey: "idAdministrativo" });
 Administrativo.hasMany(InstanciaEvaluativa, { foreignKey: "idAdministrativo" });
 Administrativo.hasMany(Legajo, { foreignKey: "idAdministrativo" });
@@ -77,7 +78,7 @@ Administrativo.hasMany(TurnoExamen, { foreignKey: "idAdministrativo" });
 Administrativo.hasMany(UnidadCurricular, { foreignKey: "idAdministrativo" });
 Administrativo.hasMany(Usuario, { foreignKey: "idAdministrativo" });
 
-// belongsTo correspondientes (se colocan individualmente en cada modelo)
+// belongsTo correspondientes
 Asistencia.belongsTo(Administrativo, { foreignKey: "idAdministrativo" });
 CambioPlanEstudio.belongsTo(Administrativo, { foreignKey: "idAdministrativo" });
 Carrera.belongsTo(Administrativo, { foreignKey: "idAdministrativo" });
@@ -94,6 +95,7 @@ DossierInstitucional.belongsTo(Administrativo, { foreignKey: "idAdministrativo" 
 EquivalenciaUnidadCurricular.belongsTo(Administrativo, { foreignKey: "idAdministrativo" });
 Estudiante.belongsTo(Administrativo, { foreignKey: "idAdministrativo" });
 EstudianteXUnidadCurricular.belongsTo(Administrativo, { foreignKey: "idAdministrativo" });
+InformacionExtra.belongsTo(Administrativo, { foreignKey: "idAdministrativo" }); // ✅ NUEVO
 InscripcionCarrera.belongsTo(Administrativo, { foreignKey: "idAdministrativo" });
 InstanciaEvaluativa.belongsTo(Administrativo, { foreignKey: "idAdministrativo" });
 Legajo.belongsTo(Administrativo, { foreignKey: "idAdministrativo" });
@@ -173,10 +175,12 @@ MesaExamenXLegajo.belongsTo(Legajo, { foreignKey: "idLegajo" });
 Carrera.hasMany(DossierInstitucional, { foreignKey: "idCarrera" });
 Carrera.hasMany(PlanEstudio, { foreignKey: "idCarrera" });
 Carrera.hasMany(TipoDocumentoRequerido, { foreignKey: "idCarrera" });
+Carrera.hasMany(InformacionExtra, { foreignKey: "idCarrera" }); // ✅ NUEVO
 
 DossierInstitucional.belongsTo(Carrera, { foreignKey: "idCarrera" });
 PlanEstudio.belongsTo(Carrera, { foreignKey: "idCarrera" });
 TipoDocumentoRequerido.belongsTo(Carrera, { foreignKey: "idCarrera" });
+InformacionExtra.belongsTo(Carrera, { foreignKey: "idCarrera" }); // ✅ NUEVO
 
 // ---------- PlanEstudio ----------
 PlanEstudio.hasMany(CambioPlanEstudio, { foreignKey: "idPlanEstudioOrigen", as: "CambiosOrigen" });
@@ -270,7 +274,6 @@ TipoDocumentoRequerido.hasMany(DocumentoLegajo, { foreignKey: "idTipoDocumentoRe
 
 DocumentoLegajo.belongsTo(TipoDocumentoRequerido, { foreignKey: "idTipoDocumentoRequerido" });
 
-
 export {
   sequelize,
   Administrativo,
@@ -290,6 +293,7 @@ export {
   EquivalenciaUnidadCurricular,
   Estudiante,
   EstudianteXUnidadCurricular,
+  InformacionExtra,
   InscripcionCarrera,
   InstanciaEvaluativa,
   Legajo,

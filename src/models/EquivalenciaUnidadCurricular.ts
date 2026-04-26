@@ -85,14 +85,6 @@ EquivalenciaUnidadCurricular.init(
     sequelize,
     tableName: "equivalencias_unidades_curriculares",
     timestamps: true,
-    // Opcional: índices para optimizar consultas
-    indexes: [
-      { fields: ["id_plan_estudio_origen"] },
-      { fields: ["id_plan_estudio_destino"] },
-      { fields: ["id_unidad_curricular_origen"] },
-      { fields: ["id_unidad_curricular_destino"] },
-      { fields: ["id_administrativo"] }
-    ]
   }
 );
 
