@@ -8,6 +8,8 @@ interface EstudianteAttributes extends InferAttributes<Estudiante> {
   nombre: string;
   apellido: string;
   email: string;
+  telefono: string;
+  domicilio: string;
   trabaja: boolean | null;
   activo: boolean;
   idUsuario: number;
@@ -20,6 +22,8 @@ interface EstudianteCreationAttributes extends InferCreationAttributes<Estudiant
   nombre: string;
   apellido: string;
   email: string;
+  telefono: string;
+  domicilio: string;
   trabaja: boolean | null;
   activo: CreationOptional<boolean>;
   idUsuario: number;
@@ -32,6 +36,8 @@ class Estudiante extends Model<EstudianteAttributes, EstudianteCreationAttribute
   declare nombre: string;
   declare apellido: string;
   declare email: string;
+  declare telefono: string;
+  declare domicilio: string;
   declare trabaja: boolean | null;
   declare activo: CreationOptional<boolean>;
   declare idUsuario: number;
@@ -77,6 +83,14 @@ Estudiante.init(
         isEmail: { msg: "Debe proporcionar un email válido" },
         notEmpty: { msg: "El email es obligatorio" },
       },
+    },
+    telefono: {
+      type: DataTypes.STRING(30),
+      allowNull: false,
+    },
+    domicilio: {
+      type: DataTypes.STRING(200),
+      allowNull: false,
     },
     trabaja: {
       type: DataTypes.BOOLEAN,

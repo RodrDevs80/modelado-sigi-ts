@@ -10,6 +10,7 @@ interface AdministrativoAttributes extends InferAttributes<Administrativo> {
   dni: string;
   contrasenia: string;
   telefono: string;
+  domicilio: string;
   idRol: number;
   activo: boolean;
 }
@@ -22,6 +23,7 @@ interface AdministrativoCreationAttributes extends InferCreationAttributes<Admin
   dni: string;
   contrasenia: string;
   telefono: string;
+  domicilio: string;
   idRol: number;
   activo: CreationOptional<boolean>;
 }
@@ -34,6 +36,7 @@ class Administrativo extends Model<AdministrativoAttributes, AdministrativoCreat
   declare dni: string;
   declare contrasenia: string;
   declare telefono: string;
+  declare domicilio: string;
   declare idRol: number;
   declare activo: CreationOptional<boolean>;
 
@@ -92,6 +95,10 @@ Administrativo.init(
     },
     telefono: {
       type: DataTypes.STRING(30),
+      allowNull: false,
+    },
+    domicilio: {
+      type: DataTypes.STRING(200),
       allowNull: false,
     },
     idRol: {
