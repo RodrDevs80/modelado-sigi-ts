@@ -10,12 +10,13 @@ interface MesaExamenXLegajoAttributes extends InferAttributes<MesaExamenXLegajo>
   nota_oral: number;
   nota_escrita: number;
   nota_final: number;
+  fechaUltimaModificacion: string;
+  estaBloqueado: boolean;
   resultado: "aprobado" | "desaprobado" | "ausente";
   idAdministrativo: number;
 }
 
 interface MesaExamenXLegajoCreationAttributes extends InferCreationAttributes<MesaExamenXLegajo> {
-  id: CreationOptional<number>;
   idMesaExamen: number;
   idLegajo: number;
   condicion: "regular" | "libre";
@@ -23,6 +24,7 @@ interface MesaExamenXLegajoCreationAttributes extends InferCreationAttributes<Me
   nota_oral: number;
   nota_escrita: number;
   nota_final: number;
+  fechaUltimaModificacion: string;
   resultado: "aprobado" | "desaprobado" | "ausente";
   idAdministrativo: number;
 }
@@ -36,6 +38,8 @@ class MesaExamenXLegajo extends Model<MesaExamenXLegajoAttributes, MesaExamenXLe
   declare nota_oral: number;
   declare nota_escrita: number;
   declare nota_final: number;
+  declare fechaUltimaModificacion: string;
+  declare estaBloqueado: CreationOptional<boolean>;
   declare resultado: "aprobado" | "desaprobado" | "ausente";
   declare idAdministrativo: number;
 }
@@ -95,6 +99,14 @@ MesaExamenXLegajo.init(
     nota_final: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    fechaUltimaModificacion: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    estaBloqueado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     },
     resultado: {
       type: DataTypes.ENUM("aprobado", "desaprobado", "ausente")
