@@ -7,7 +7,9 @@ interface MesaExamenXLegajoAttributes extends InferAttributes<MesaExamenXLegajo>
   idLegajo: number;
   condicion: "regular" | "libre";
   fechaInscripcion: Date;
-  nota: number | null;
+  nota_oral: number;
+  nota_escrita: number;
+  nota_final: number;
   resultado: "aprobado" | "desaprobado" | "ausente";
   idAdministrativo: number;
 }
@@ -18,7 +20,9 @@ interface MesaExamenXLegajoCreationAttributes extends InferCreationAttributes<Me
   idLegajo: number;
   condicion: "regular" | "libre";
   fechaInscripcion: Date;
-  nota: number | null;
+  nota_oral: number;
+  nota_escrita: number;
+  nota_final: number;
   resultado: "aprobado" | "desaprobado" | "ausente";
   idAdministrativo: number;
 }
@@ -29,7 +33,9 @@ class MesaExamenXLegajo extends Model<MesaExamenXLegajoAttributes, MesaExamenXLe
   declare idLegajo: number;
   declare condicion: "regular" | "libre";
   declare fechaInscripcion: Date;
-  declare nota: number | null;
+  declare nota_oral: number;
+  declare nota_escrita: number;
+  declare nota_final: number;
   declare resultado: "aprobado" | "desaprobado" | "ausente";
   declare idAdministrativo: number;
 }
@@ -78,9 +84,17 @@ MesaExamenXLegajo.init(
         }
       }
     },
-    nota: {
+    nota_oral: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: false
+    },
+    nota_escrita: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    nota_final: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     resultado: {
       type: DataTypes.ENUM("aprobado", "desaprobado", "ausente")

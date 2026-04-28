@@ -13,6 +13,7 @@ interface DocenteAttributes extends InferAttributes<Docente> {
   especialidad: string | null;
   domicilio: string;
   telefono: string;
+  foto: string | null;
   idAdministrativo: number;
   activo: CreationOptional<boolean>;
 }
@@ -28,6 +29,7 @@ interface DocenteCreationAttributes extends InferCreationAttributes<Docente> {
   especialidad: string | null;
   domicilio: string;
   telefono: string;
+  foto: string | null;
   idAdministrativo: number;
   activo: CreationOptional<boolean>;
 }
@@ -43,6 +45,7 @@ class Docente extends Model<DocenteAttributes, DocenteCreationAttributes> {
   declare especialidad: string | null;
   declare domicilio: string;
   declare telefono: string;
+  declare foto: string | null;
   declare idAdministrativo: number;
   declare activo: CreationOptional<boolean>;
 
@@ -110,6 +113,10 @@ Docente.init(
     telefono: {
       type: DataTypes.STRING(30),
       allowNull: false,
+    },
+    foto: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
     },
     idAdministrativo: {
       type: DataTypes.INTEGER,
